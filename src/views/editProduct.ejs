@@ -1,0 +1,66 @@
+<form
+  action="/update-product"
+  method="POST"
+  class="w-75 mx-auto mt-5"
+  enctype="multipart/form-data"
+>
+  <h2>Edit Product</h2>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="exampleFormControlInput1"
+      name="title"
+      value="<%= data.product.title%>"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Price</label>
+    <input
+      type="text"
+      class="form-control"
+      id="exampleFormControlInput1"
+      name="price"
+      value="<%= data.product.price%>"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Image</label>
+    <input type="file" name="image" />
+  </div>
+  <div class="mb-3">
+    <img
+      style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%"
+      src="<%= data.product.image %>"
+      alt=""
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label"
+      >Description</label
+    >
+    <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      rows="3"
+      name="description"
+    >
+<%= data.product.description %></textarea
+    >
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Feature</label>
+    <select class="form-select"  aria-label="Default select example" name="feature" 
+    >
+        <option value="true" <%= data.product.feature ? 'selected' : '' %>>True</option>
+        <option value="false" <%= !data.product.feature ? 'selected' : '' %>>False</option>
+    </select>
+     
+  </div>
+  <div>
+    <input type="hidden" name="id" value="<%= data.product.id%>">
+    <button type="submit" class="btn btn-primary">Edit</button>
+  </div>
+ 
+</form>

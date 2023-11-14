@@ -1,0 +1,29 @@
+<form method="POST" action="/updateCategory"
+enctype="multipart/form-data"
+>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        name="name"
+        value="<%= data.category.name %>"
+
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">slug</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        name="slug"
+        value="<%=data.category.slug %>"
+      />
+    </div>
+    <input type="hidden" value="<%= data.category.id %>" name="id" />
+    <button type="submit" class="btn btn-primary">Edit</button>
+  </form>

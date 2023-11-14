@@ -1,0 +1,31 @@
+<div>
+    <button class="btn btn-blue"><a style="color:black;" href="/create-caygory">Thêm Danh Mục</a></button>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">tên danh mục</th>
+        <th scope="col">slug</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% data.categorys.forEach(element => { %>
+        <tr>
+          <th scope="row"><%= element.id %></th>
+          <td><%= element.name %></td>
+          <td><%= element.slug %></td>
+         <td>
+                <a href="/getUpdateCategory/<%=element.id%>" class="btn btn-primary">Edit</a>
+         </td>
+          <td>
+            <form action="/deleteCategory" method="POST">
+                <input type="hidden" name="id" value="<%= element.id  %>" />
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </td>
+       <% }) %>
+        </tr>
+      </tbody>
+  </table>

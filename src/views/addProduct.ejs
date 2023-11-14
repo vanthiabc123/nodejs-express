@@ -1,0 +1,53 @@
+<form
+  action="/insert-product"
+  method="POST"
+  class="w-75 mx-auto mt-5"
+  enctype="multipart/form-data"
+>
+  <h2>Add Product</h2>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="exampleFormControlInput1"
+      name="title"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Price</label>
+    <input
+      type="text"
+      class="form-control"
+      id="exampleFormControlInput1"
+      name="price"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Image</label>
+    <input type="file" name="image" />
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label"
+      >Description</label
+    >
+    <textarea
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      rows="3"
+      name="description"
+    ></textarea>
+  </div>
+  <div class="mb-3">
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      name="category"
+    >
+      <% data.category.forEach(element => { %>
+      <option value="<%= element.id %>"><%= element.name %></option>
+      <% }) %>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

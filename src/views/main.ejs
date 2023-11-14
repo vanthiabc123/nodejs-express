@@ -1,0 +1,37 @@
+<div>
+  <button class="btn btn-blue"><a style="color:black;" href="/create-new">Thêm User</a></button>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">UserName</th> 
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">Role</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.users.forEach(element => { %>
+    <tr>
+      <th scope="row"><%= element.id %></th>
+      <td><%= element.firstName %></td>
+      <td><%= element.userName %></td>
+      <td><%= element.email %></td>
+      <td><%= element.address %></td>
+      <td><%= element.role %></td>
+      <td>
+        <a href="/edit-user/<%= element._id %>" class="btn btn-primary">Edit</a>
+      </td>
+      <td>
+        <form action="/delete" method="POST">
+          <input type="hidden" name="id" value="<%= element.id  %>" />
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </td>
+      <% }) %>
+    </tr>
+  </tbody>
+</table>

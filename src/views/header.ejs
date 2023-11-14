@@ -1,0 +1,33 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/get-productUser">Nodejs</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <% if (locals.category) { %> <% category.forEach(element => { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/category/<%= element.id %>"
+              ><%= element.name %></a
+            >
+          </li>
+          <% }) %> <% } %> <% if (locals.user) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/"><%= locals.user.userName %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+          </li>
+          <% } %>
+        <li><a href="/category-page">Category</a></li>
+        <li><a href="/product-page">Product</a></li>
+      </ul>
+    </div>
+  </nav>

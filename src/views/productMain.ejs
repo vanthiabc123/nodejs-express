@@ -1,0 +1,45 @@
+<div>
+  <button class="btn btn-blue"><a style="color:black;" href="/create-product">Thêm sản phẩm</a></button>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Image</th>
+        <th scope="col">Price</th>
+        <th scope="col">Desciption</th>
+        <th scope="col">Feature</th>
+        <th scope="col">category</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.products.forEach(element => { %>
+      <tr>
+        <th scope="row"><%= element.id %></th>
+        <td><%= element.title %></td>
+        <td>
+          <img
+            style="width: 100px; height: 100px; object-fit: cover"
+            src="<%= element.image %>"
+            alt=""
+          />
+        </td>
+        <td><%= element.price %></td>
+        <td><%= element.description %></td>
+        <td><%= element.feature %></td>
+        <td><%= element.category %></td>
+        <td>
+        <form action="/delete-product" method="POST">
+          <input type="hidden" name="id" value="<%=element.id%>">
+          <button type="submit" class="btn btn-warning">delete</button>
+        </form>
+        </td>
+        <td>
+          <a href="/getUpdateProduct/<%= element.id %>" class="btn btn-primary">Edit</a>
+        </td>
+        <% }) %>
+      </tr>
+    </tbody>
+  </table>

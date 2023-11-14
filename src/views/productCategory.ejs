@@ -1,0 +1,14 @@
+<div class="row mt-5 gap-3">
+    <% data.product.forEach(element => { %>
+    <div class="card col-4">
+      <img src="<%= element.image %>" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <a href="/product/<%= element.id %>" class="card-title"
+          ><%= element.title %></a
+        >
+        <p class="card-text"><%= element.description %></p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+    <% }) %>
+  </div>
