@@ -47,6 +47,7 @@ router.get("/forget-password",registerController.getForgetPassword)
 router.post("/sendEmail",registerController.forgotPassword)
 router.get("/reset-password", resetPassword.showPage);
 router.post("/reset-password", resetPassword.verifyPasswordToken);
+router.post("/post-comment",productController.addComment)
 return app.use("/",router);
 }
 module.exports=initWebRoute;

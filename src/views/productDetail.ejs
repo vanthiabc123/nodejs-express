@@ -9,18 +9,24 @@
       <a href="#" class="btn btn-primary">Add to Cart</a>
     </div>
   </div>
-  <div class="container" style="margin-bottom: 40px;">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="input-group">
-                <input style="width: 1000px;margin-bottom: 20px;" id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info">
-                <button style="float: right;" type="submit" class="btn btn-success">Bình luận</button>
-              </div>
-        </div>
-    </div>
-  </div>
   <div class="container">
-    <img src="" alt="">
-    <div>name</div><br>
-    <div>chất lượng tốt</div>
-  </div>
+    <h3>Comments</h3>
+    <% data.comments.forEach(comment => { %>
+        <img src="" alt="">
+        <div><%= locals.user.userName %></div><br>
+        <div><%= comment.content %></div>
+        <hr>
+    <% }) %>
+
+    <form action="/post-comment" method="post">
+        <input type="hidden" name="productId" value="<%= data.product._id %>">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input style="width: 1000px;margin-bottom: 20px;" id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info">
+                    <button style="float: right;" type="submit" class="btn btn-success">Bình luận</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

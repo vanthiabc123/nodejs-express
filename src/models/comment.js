@@ -4,7 +4,10 @@ const commentSchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
     ref: "Users",
-  },
+},
+userName: {
+  type: String,
+},
   productId:{
     type: Schema.Types.ObjectId,
     ref: "Products",

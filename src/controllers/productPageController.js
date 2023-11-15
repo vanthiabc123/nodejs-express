@@ -1,5 +1,6 @@
 const Products=require("../models/product");
-const Categoris=require("../models/category")
+const Categoris=require("../models/category");
+const Comment=require("../models/comment")
 const getPageProduct=async(req,res)=>{
     const products=await Products.find({})
   return  res.render("home.ejs",{
@@ -78,8 +79,9 @@ const getProducts = async (req, res) => {
   const getProductDetail = async (req, res) => {
     const { id } = req.params;
     const product = await Products.findById(id);
+    const comments = await getComments(id);
     return res.render("home.ejs", {
-      data: { page: "productDetail", title: "Trang chi tiet san pham", product },
+      data: { page: "productDetail", title: "Trang chi tiet san pham", product,comments  },
     });
   };
 
@@ -92,6 +94,25 @@ const getProducts = async (req, res) => {
         data:{page:"productCategory",title:"đây là rang danh mục sản phẩm",product}
     })
   }
+  const getComments = async (productId) => {
+    const comments = await Comment.find({ productId }).populate('userId'); // Assuming you have a 'userId' field in your comment model
+    return comments;
+};
+const addComment=async(req,res)=>{
+    const { userId, productId, msg} = req.body; 
+        try {
+            const newComment = new Comment({
+                userId,
+                productId,
+                userName: res.locals.user.userName, 
+                content: msg,
+            });
+            await newComment.save();
+            res.redirect("/");
+    } catch (error) {
+        console.log(error)
+    }
+}
 module.exports={
     getPageProduct,
     getAddProduct,
@@ -101,5 +122,7 @@ module.exports={
     updateProduct,
     getProducts,
     getProductDetail,
-    getCategoryDetail
-};
+    getCategoryDetail,
+    addComment
+    }
+
